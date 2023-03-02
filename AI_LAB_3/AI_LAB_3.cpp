@@ -35,22 +35,11 @@ void MAIN_FUNC(const int num[]) {
 		}
 		weights.push_back(temp);
 	}
-	cout << "Полученные веса: ";
-	for (int i = 0; i < weights.size(); i++) {
-		cout << weights[i] << " ";
-	}cout << endl;
 
 	int temp_max = *max_element(weights.begin(), weights.end());
 	for (int i = 0; i < weights.size(); i++) {
-		if (weights[i] >= temp_max) { /*max.push_back(massa[i]);*/ number_weight.push_back(i); } //если пришли одиновые макс числа, то записываем их номер тоже
-	}
-
-	cout << "Число(а) с маскимальным весом: ";
-	for (int i = 0; i < number_weight.size(); i++) {
-		cout << number_weight[i] << " ";
-	}cout << endl;
-
-	
+		if (weights[i] >= temp_max) { number_weight.push_back(i); } //если пришли одиновые макс числа, то записываем их номер тоже
+	}	
 
 	if (num[0] == number_weight[0] and number_weight.size() == 1) { flag = true; } //веса побранны
 	else {
@@ -59,22 +48,30 @@ void MAIN_FUNC(const int num[]) {
 			for (int i = 1; i < column + 1; i++) {
 				if (num[i] == 1) {
 					main_selection[temp][i]--;
-					cout << main_selection[temp][i] << " ";
+					//cout << main_selection[temp][i] << " ";
 				}
 			}
 		}
-		cout << endl;
+		//cout << endl;
 		int temp = num[0];
 		for (int i = 1; i < column + 1; i++) {
 			if (num[i] == 1) {
 				main_selection[temp][i]++;
-				cout << main_selection[temp][i] << " ";
+				//cout << main_selection[temp][i] << " ";
 			}
 		}
 		cout << endl;
 	}
 
-	if (flag == true) { cout << "Перспетрон обучился!"<<endl; }
+	if (flag == true) { 
+		cout << "Перспетрон обучился!"<<endl;
+		for (int i = 0; i < number; i++) {
+			for (int j = 1; j < column + 1; j++) {
+				cout << main_selection[i][j] << " ";
+			}
+			cout << endl;
+		}
+	}
 	else { goto start; }
 	
 }
@@ -95,5 +92,14 @@ int main() {
 	const int number_8[column + 1] = {8, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1 }; //8
 	const int number_9[column + 1] = {9, 1, 1, 1, 1, 0, 1, 1, 1, 1, 0, 1, 0, 1, 0, 0 }; //9
 
-	MAIN_FUNC(number_4);
+	MAIN_FUNC(number_0); cout << "Число: " << 0 << endl;
+	MAIN_FUNC(number_1); cout << "Число: " << 1 << endl;
+	MAIN_FUNC(number_2); cout << "Число: " << 2 << endl;
+	MAIN_FUNC(number_3); cout << "Число: " << 3 << endl;
+	MAIN_FUNC(number_4); cout << "Число: " << 4 << endl;
+	MAIN_FUNC(number_5); cout << "Число: " << 5 << endl;
+	MAIN_FUNC(number_6); cout << "Число: " << 6 << endl;
+	MAIN_FUNC(number_7); cout << "Число: " << 7 << endl;
+	MAIN_FUNC(number_8); cout << "Число: " << 8 << endl;
+	MAIN_FUNC(number_9); cout << "Число: " << 9 << endl;
 }
