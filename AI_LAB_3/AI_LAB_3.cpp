@@ -20,6 +20,62 @@ int main_selection[number][column + 1] = {
 		{9, 10,11,12,13,14,15,1,2,3,4,5,6,7,8,9},
 };
 
+//Цифры в двоичном предствалении
+const int number_0[column + 1] = { 0, 1, 1, 1, 1, 0, 1, 1, 0, 1, 1, 0, 1, 1, 1, 1 }; //0
+const int number_1[column + 1] = { 1, 0, 0, 1, 0, 1, 1, 1, 0, 1, 0, 0, 1, 0, 0, 1 }; //1
+const int number_2[column + 1] = { 2, 1, 1, 1, 0, 0, 1, 0, 0, 1, 0, 1, 0, 1, 1, 1 }; //2
+const int number_3[column + 1] = { 3, 1, 1, 1, 0, 1, 0, 1, 1, 1, 0, 1, 0, 1, 0, 0 }; //3
+const int number_4[column + 1] = { 4, 1, 0, 1, 1, 0, 1, 1, 1, 1, 0, 0, 1, 0, 0, 1 }; //4
+const int number_5[column + 1] = { 5, 1, 1, 1, 1, 0, 0, 1, 1, 1, 0, 0, 1, 1, 1, 1 }; //5
+const int number_6[column + 1] = { 6, 0, 0, 1, 0, 1, 0, 1, 1, 1, 1, 0, 1, 1, 1, 1 }; //6
+const int number_7[column + 1] = { 7, 1, 1, 1, 0, 1, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0 }; //7
+const int number_8[column + 1] = { 8, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1 }; //8
+const int number_9[column + 1] = { 9, 1, 1, 1, 1, 0, 1, 1, 1, 1, 0, 1, 0, 1, 0, 0 }; //9
+
+int MAIN_FUNC(int counter_check[], const int num[]);
+
+int main() {
+	//Код написал: Иванов Данила
+
+	setlocale(LC_ALL, "Russian");
+
+	int counter_check[1] = { 0 };
+
+/*
+	while (counter_check[0] < 10) {
+
+		MAIN_FUNC(counter_check, number_0);
+		MAIN_FUNC(counter_check, number_1);
+		MAIN_FUNC(counter_check, number_2);
+		MAIN_FUNC(counter_check, number_3);
+		MAIN_FUNC(counter_check, number_4);
+		MAIN_FUNC(counter_check, number_6);
+		MAIN_FUNC(counter_check, number_7);
+		MAIN_FUNC(counter_check, number_8);
+		MAIN_FUNC(counter_check, number_9);
+		//cout << "Счетчик неизменений: " << counter_check[0] << endl;
+	}*/
+
+	for (int i = 0; i < 100; i++) {
+		MAIN_FUNC(counter_check, number_0);
+		MAIN_FUNC(counter_check, number_1);
+		MAIN_FUNC(counter_check, number_2);
+		MAIN_FUNC(counter_check, number_3);
+		MAIN_FUNC(counter_check, number_4);
+		MAIN_FUNC(counter_check, number_6);
+		MAIN_FUNC(counter_check, number_7);
+		MAIN_FUNC(counter_check, number_8);
+		MAIN_FUNC(counter_check, number_9);
+	}
+
+	cout << "Персептрон обучился" << endl;
+	for (int i = 0; i < number; i++) {
+		for (int j = 1; j < column + 1; j++) {
+			cout << main_selection[i][j] << " ";
+		}cout << endl;
+	}
+
+}
 
 int MAIN_FUNC(int counter_check[], const int num[]) {
 
@@ -66,54 +122,4 @@ start:
 	cout << "Check: " << counter_check[0] << endl;
 	if (flag != true) { counter_check[0] = 0; goto start; }
 	return counter_check[0] += 1;
-}
-
-int main() {
-	//Код написал: Иванов Данила
-
-	setlocale(LC_ALL, "Russian");
-
-	cout << "Начальная матрица весов" << endl;
-	for (int i = 0; i < number; i++) {
-		for (int j = 1; j < column + 1; j++) {
-			cout << main_selection[i][j] << " ";
-		}cout << endl;
-	}
-
-	int counter_check[1] = { 0 };
-
-	//Цифры в двоичном предствалении
-	const int number_0[column + 1] = {0, 1, 1, 1, 1, 0, 1, 1, 0, 1, 1, 0, 1, 1, 1, 1 }; //0
-	const int number_1[column + 1] = {1, 0, 0, 1, 0, 1, 1, 1, 0, 1, 0, 0, 1, 0, 0, 1 }; //1
-	const int number_2[column + 1] = {2, 1, 1, 1, 0, 0, 1, 0, 0, 1, 0, 1, 0, 1, 1, 1 }; //2
-	const int number_3[column + 1] = {3, 1, 1, 1, 0, 1, 0, 1, 1, 1, 0, 1, 0, 1, 0, 0 }; //3
-	const int number_4[column + 1] = {4, 1, 0, 1, 1, 0, 1, 1, 1, 1, 0, 0, 1, 0, 0, 1 }; //4
-	const int number_5[column + 1] = {5, 1, 1, 1, 1, 0, 0, 1, 1, 1, 0, 0, 1, 1, 1, 1 }; //5
-	const int number_6[column + 1] = {6, 0, 0, 1, 0, 1, 0, 1, 1, 1, 1, 0, 1, 1, 1, 1 }; //6
-	const int number_7[column + 1] = {7, 1, 1, 1, 0, 1, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0 }; //7
-	const int number_8[column + 1] = {8, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1 }; //8
-	const int number_9[column + 1] = {9, 1, 1, 1, 1, 0, 1, 1, 1, 1, 0, 1, 0, 1, 0, 0 }; //9
-
-	while (counter_check[0] < 10) {
-				
-		MAIN_FUNC(counter_check, number_0);
-		MAIN_FUNC(counter_check, number_1);
-		MAIN_FUNC(counter_check, number_2);
-		MAIN_FUNC(counter_check, number_3);
-		MAIN_FUNC(counter_check, number_4);
-		MAIN_FUNC(counter_check, number_6);
-		MAIN_FUNC(counter_check, number_7);
-		MAIN_FUNC(counter_check, number_8);
-		MAIN_FUNC(counter_check, number_9);
-		//cout << "Счетчик неизменений: " << counter_check[0] << endl;
-
-	}
-
-	cout << "Персептрон обучился" << endl;
-	for (int i = 0; i < number; i++) {
-		for (int j = 1; j < column + 1; j++) {
-			cout << main_selection[i][j] << " ";
-		}cout << endl;
-	}
-
 }
