@@ -7,20 +7,7 @@ using namespace std;
 const int number = 10; //кол - во чисел
 const int column = 15; //кол - во столбцов
 
-void MAIN_FUNC(const int num[]) {
-
-	int main_selection[number][column + 1] = {
-		{0, 1,2,3,4,5,6,7,8,9,10,11,12,13,14,15},
-		{1, 2,3,4,5,6,7,8,9,10,11,12,13,14,15,1},
-		{2, 3,4,5,6,7,8,9,10,11,12,13,14,15,1,2},
-		{3, 4,5,6,7,8,9,10,11,12,13,14,15,1,2,3},
-		{4, 5,6,7,8,9,10,11,12,13,14,15,1,2,3,4},
-		{5, 6,7,8,9,10,11,12,13,14,15,1,2,3,4,5},
-		{6, 7,8,9,10,11,12,13,14,15,1,2,3,4,5,6},
-		{7, 8,9,10,11,12,13,14,15,1,2,3,4,5,6,7},
-		{8, 9,10,11,12,13,14,15,1,2,3,4,5,6,7,8},
-		{9, 10,11,12,13,14,15,1,2,3,4,5,6,7,8,9},
-	};
+int MAIN_FUNC(const int num[], int main_selection[][column+1]) {
 
 	start:
 	bool flag = false;
@@ -60,25 +47,30 @@ void MAIN_FUNC(const int num[]) {
 				//cout << main_selection[temp][i] << " ";
 			}
 		}
-		cout << endl;
+		//cout << endl;
 	}
 
-	if (flag == true) { 
-		cout << "Перспетрон обучился!"<<endl;
-		for (int i = 0; i < number; i++) {
-			for (int j = 1; j < column + 1; j++) {
-				cout << main_selection[i][j] << " ";
-			}
-			cout << endl;
-		}
-	}
-	else { goto start; }
-	
+	if(flag != true) { goto start; }
+	return main_selection[number][column + 1];
 }
 
 int main() {
+	//Код написал: Иванов Данила
 
 	setlocale(LC_ALL, "Russian");
+
+	int main_selection[number][column + 1] = {
+		{0, 1,2,3,4,5,6,7,8,9,10,11,12,13,14,15},
+		{1, 2,3,4,5,6,7,8,9,10,11,12,13,14,15,1},
+		{2, 3,4,5,6,7,8,9,10,11,12,13,14,15,1,2},
+		{3, 4,5,6,7,8,9,10,11,12,13,14,15,1,2,3},
+		{4, 5,6,7,8,9,10,11,12,13,14,15,1,2,3,4},
+		{5, 6,7,8,9,10,11,12,13,14,15,1,2,3,4,5},
+		{6, 7,8,9,10,11,12,13,14,15,1,2,3,4,5,6},
+		{7, 8,9,10,11,12,13,14,15,1,2,3,4,5,6,7},
+		{8, 9,10,11,12,13,14,15,1,2,3,4,5,6,7,8},
+		{9, 10,11,12,13,14,15,1,2,3,4,5,6,7,8,9},
+	};
 
 	//Цифры в двоичном предствалении
 	const int number_0[column + 1] = {0, 1, 1, 1, 1, 0, 1, 1, 0, 1, 1, 0, 1, 1, 1, 1 }; //0
@@ -92,14 +84,23 @@ int main() {
 	const int number_8[column + 1] = {8, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1 }; //8
 	const int number_9[column + 1] = {9, 1, 1, 1, 1, 0, 1, 1, 1, 1, 0, 1, 0, 1, 0, 0 }; //9
 
-	MAIN_FUNC(number_0); cout << "Число: " << 0 << endl;
-	MAIN_FUNC(number_1); cout << "Число: " << 1 << endl;
-	MAIN_FUNC(number_2); cout << "Число: " << 2 << endl;
-	MAIN_FUNC(number_3); cout << "Число: " << 3 << endl;
-	MAIN_FUNC(number_4); cout << "Число: " << 4 << endl;
-	MAIN_FUNC(number_5); cout << "Число: " << 5 << endl;
-	MAIN_FUNC(number_6); cout << "Число: " << 6 << endl;
-	MAIN_FUNC(number_7); cout << "Число: " << 7 << endl;
-	MAIN_FUNC(number_8); cout << "Число: " << 8 << endl;
-	MAIN_FUNC(number_9); cout << "Число: " << 9 << endl;
+	for (int i = 0; i < 20; i++) {
+		MAIN_FUNC(number_0, main_selection);
+		MAIN_FUNC(number_1, main_selection);
+		MAIN_FUNC(number_2, main_selection);
+		MAIN_FUNC(number_3, main_selection);
+		MAIN_FUNC(number_4, main_selection);
+		MAIN_FUNC(number_5, main_selection);
+		MAIN_FUNC(number_6, main_selection);
+		MAIN_FUNC(number_7, main_selection);
+		MAIN_FUNC(number_8, main_selection);
+		MAIN_FUNC(number_9, main_selection);
+	}
+
+	for (int i = 0; i < number; i++) {
+		for (int j = 1; j < column + 1; j++) {
+			cout << main_selection[i][j] << " ";
+		}cout << endl;
+	}
+
 }
