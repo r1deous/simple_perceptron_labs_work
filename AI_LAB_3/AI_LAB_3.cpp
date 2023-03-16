@@ -20,6 +20,7 @@ int main_selection[number][column + 1] = {
 		{9, 10,11,12,13,14,15,1,2,3,4,5,6,7,8,9},
 };
 
+
 //Цифры в двоичном предствалении
 const int number_0[column + 1] = { 0, 1, 1, 1, 1, 0, 1, 1, 0, 1, 1, 0, 1, 1, 1, 1 }; //0
 const int number_1[column + 1] = { 1, 0, 0, 1, 0, 1, 1, 1, 0, 1, 0, 0, 1, 0, 0, 1 }; //1
@@ -39,9 +40,15 @@ int main() {
 
 	setlocale(LC_ALL, "Russian");
 
+	cout << "Начальная матрица весов" << endl;
+	for (int i = 0; i < number; i++) {
+		for (int j = 1; j < column + 1; j++) {
+			cout << main_selection[i][j] << " ";
+		}cout << endl;
+	}cout << endl;
+
 	int counter_check[1] = { 0 };
 
-/*
 	while (counter_check[0] < 10) {
 
 		MAIN_FUNC(counter_check, number_0);
@@ -54,18 +61,6 @@ int main() {
 		MAIN_FUNC(counter_check, number_8);
 		MAIN_FUNC(counter_check, number_9);
 		//cout << "Счетчик неизменений: " << counter_check[0] << endl;
-	}*/
-
-	for (int i = 0; i < 100; i++) {
-		MAIN_FUNC(counter_check, number_0);
-		MAIN_FUNC(counter_check, number_1);
-		MAIN_FUNC(counter_check, number_2);
-		MAIN_FUNC(counter_check, number_3);
-		MAIN_FUNC(counter_check, number_4);
-		MAIN_FUNC(counter_check, number_6);
-		MAIN_FUNC(counter_check, number_7);
-		MAIN_FUNC(counter_check, number_8);
-		MAIN_FUNC(counter_check, number_9);
 	}
 
 	cout << "Персептрон обучился" << endl;
@@ -119,7 +114,7 @@ start:
 		}
 		//cout << endl;
 	}
-	cout << "Check: " << counter_check[0] << endl;
+	//cout << "Check: " << counter_check[0] << endl;
 	if (flag != true) { counter_check[0] = 0; goto start; }
 	return counter_check[0] += 1;
 }
